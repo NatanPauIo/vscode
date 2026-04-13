@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Controle de Pagamentos – Produtora Iniciall</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f2ed;
+      --amber: #f5a800;
+      --amber-dim: #c98800;
+      --red: #e03d3d;
+      --red-bg: rgba(224, 61, 61, 0.08);
+      --green: #2ecc8a;
+      --green-bg: rgba(46, 204, 138, 0.08);
+      --gray: #2a2a2a;
+      --text-muted: #888;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding: 2rem 2.5rem;
+      background: #ffffff;
+      border-bottom: 3px solid var(--amber);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .brand-logo {
+      height: 80px;
+      width: auto;
+      display: block;
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-left: 0.25rem;
+    }
+    .brand-sup {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.35em;
+      color: #999;
+      text-transform: uppercase;
+    }
+    .brand-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #111;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .brand-name span { color: var(--amber); }
+    .header-meta { text-align: right; }
+    .header-meta p {
+      font-size: 0.78rem;
+      color: #999;
+      font-family: 'Space Mono', monospace;
+    }
+    .header-meta strong {
+      display: block;
+      color: #111;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      margin: 2px 0;
+    }
+
+    .amber-line {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--amber) 40%, transparent);
+      opacity: 0.25;
+    }
+
+    /* ── SUMMARY ── */
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: #161616;
+      border-bottom: 1px solid #1e1e1e;
+    }
+    .summary-card {
+      background: var(--black);
+      padding: 1.75rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      transition: background 0.15s;
+    }
+    .summary-card:hover { background: #0d0d0d; }
+    .summary-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .summary-value {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .summary-value.green { color: var(--green); }
+    .summary-value.red   { color: var(--red); }
+    .summary-value.amber { color: var(--amber); }
+    .summary-value.white { color: var(--white); }
+    .summary-sub { font-size: 0.72rem; color: #555; }
+
+    /* ── PROGRESS ── */
+    .progress-section {
+      padding: 1.75rem 2.5rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+    }
+    .progress-label span {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .progress-label strong {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--amber);
+    }
+    .progress-track {
+      height: 5px;
+      background: #1e1e1e;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--amber-dim), var(--amber));
+      border-radius: 3px;
+      animation: fillProgress 1.3s cubic-bezier(.4,0,.2,1) 0.3s forwards;
+    }
+    @keyframes fillProgress { to { width: 72.7%; } }
+
+    /* ── TABLE ── */
+    .table-section { padding: 2rem 2.5rem; }
+    .table-header {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 1.25rem;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    thead th {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #555;
+      text-align: left;
+      padding: 0.6rem 0.9rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    tbody tr {
+      border-bottom: 1px solid #111;
+      transition: background 0.12s;
+      opacity: 0;
+      animation: fadeUp 0.4s ease forwards;
+    }
+    tbody tr:hover { background: #0f0f0f; }
+    tbody td { padding: 0.9rem; font-size: 0.86rem; vertical-align: middle; }
+    tbody tr:nth-child(1){animation-delay:.04s} tbody tr:nth-child(2){animation-delay:.08s}
+    tbody tr:nth-child(3){animation-delay:.12s} tbody tr:nth-child(4){animation-delay:.16s}
+    tbody tr:nth-child(5){animation-delay:.2s}  tbody tr:nth-child(6){animation-delay:.24s}
+    tbody tr:nth-child(7){animation-delay:.28s} tbody tr:nth-child(8){animation-delay:.32s}
+    tbody tr:nth-child(9){animation-delay:.36s} tbody tr:nth-child(10){animation-delay:.4s}
+    tbody tr:nth-child(11){animation-delay:.44s}
+    @keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+    .sem-badge { font-family:'Space Mono',monospace; font-size:0.68rem; color:#555; }
+    .periodo   { font-family:'Space Mono',monospace; font-size:0.72rem; color:#555; }
+    .status-badge {
+      display:inline-flex; align-items:center; gap:5px;
+      padding:3px 9px; border-radius:2px;
+      font-family:'Space Mono',monospace; font-size:0.62rem;
+      letter-spacing:0.04em; font-weight:700; text-transform:uppercase;
+    }
+    .status-badge.pago   { background:var(--green-bg); color:var(--green); border:1px solid rgba(46,204,138,.18); }
+    .status-badge.atraso { background:var(--red-bg);   color:var(--red);   border:1px solid rgba(224,61,61,.18); }
+    .status-dot { width:5px; height:5px; border-radius:50%; background:currentColor; }
+    .status-badge.atraso .status-dot { animation:blink 1.5s ease infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.15} }
+    .valor     { font-family:'Space Mono',monospace; font-size:0.86rem; color:var(--white); }
+    .data-pag  { font-family:'Space Mono',monospace; font-size:0.72rem; color:#555; }
+    .quem-pagou { font-size:0.8rem; color:#777; }
+
+    /* ── TOTALS ── */
+    .totals-section {
+      margin: 0 2.5rem 2rem;
+      border:1px solid #1a1a1a;
+      border-top:2px solid var(--amber);
+      display:grid; grid-template-columns:1fr 1fr;
+    }
+    .total-item { padding:1.25rem 1.5rem; border-right:1px solid #1a1a1a; }
+    .total-item:last-child { border-right:none; }
+    .total-item-label {
+      font-family:'Space Mono',monospace; font-size:0.58rem;
+      letter-spacing:0.18em; text-transform:uppercase; color:#555; margin-bottom:0.35rem;
+    }
+    .total-item-value { font-family:'Space Mono',monospace; font-size:1.2rem; font-weight:700; }
+    .total-item-value.green { color:var(--green); }
+    .total-item-value.red   { color:var(--red); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding:1.25rem 2.5rem;
+      border-top:1px solid #141414;
+      display:flex; justify-content:space-between; align-items:center;
+      flex-wrap:wrap; gap:0.75rem;
+    }
+    footer p { font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.08em; color:#333; }
+    footer strong { color:var(--amber); }
+
+    .fade-in { opacity:0; transform:translateY(10px); animation:fadeUp 0.5s ease forwards; }
+
+    @media(max-width:700px){
+      header { padding:1.5rem 1rem; }
+      .brand-logo { height:60px; }
+      .summary { grid-template-columns:1fr 1fr; }
+      .table-section { padding:1rem; overflow-x:auto; }
+      table { min-width:540px; }
+      .totals-section { margin:0 1rem 1.5rem; }
+      footer { padding:1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="fade-in">
+    <div class="brand">
+      <img class="brand-logo" src="imagens/iniciall.png" alt="Produtora Iniciall" />
+      <div class="brand-text">
+        <span class="brand-sup">Controle de Pagamentos</span>
+        <div class="brand-name">inicia<span>ll</span></div>
+      </div>
+    </div>
+    <div class="header-meta">
+      <p>Recebedor</p>
+      <strong>Natan Paulo Fernandes</strong>
+      <p>Início: 23/01/2026 · R$ 250,00/semana</p>
+    </div>
+  </header>
+
+  <div class="amber-line"></div>
+
+  <div class="summary fade-in" style="animation-delay:.08s">
+    <div class="summary-card">
+      <span class="summary-label">Total Pago</span>
+      <span class="summary-value green">R$ 2.000</span>
+      <span class="summary-sub">8 semanas pagas</span>
+    </div>
+    <div class="summary-card">
+      <span class="summary-label">Em Aberto</span>
+      <span class="summary-value red">R$ 750</span>
+      <span class="summary-sub">3 semanas em atraso</span>
+    </div>
+    <div class="summary-card">
+      <span class="summary-label">Previsão de Quitação</span>
+      <span class="summary-value amber">-</span>
+      <span class="summary-sub">Data prevista</span>
+    </div>
+  </div>
+
+  <div class="progress-section fade-in" style="animation-delay:.16s">
+    <div class="progress-label">
+      <span>Progresso do pagamento</span>
+      <strong>72,7% pago</strong>
+    </div>
+    <div class="progress-track"><div class="progress-fill"></div></div>
+  </div>
+
+  <div class="table-section fade-in" style="animation-delay:.2s">
+    <p class="table-header">Histórico de semanas</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Semana</th><th>Período</th><th>Status</th>
+          <th>Data Pag.</th><th>Valor</th><th>Quem Pagou</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="sem-badge">Sem 1</td><td class="periodo">23/01 – 29/01</td><td><span class="status-badge pago"><span class="status-dot"></span>Pago</span></td><td class="data-pag">23/01/2026</td><td class="valor">R$ 250,00</td><td class="quem-pagou">Tullio D. Frescura</td></tr>
+        <tr><td class="sem-badge">Sem 2</td><td class="periodo">30/01 – 05/02</td><td><span class="status-badge pago"><span class="status-dot"></span>Pago</span></td><td class="data-pag">31/01/2026</td><td class="valor">R$ 250,00</td><td class="quem-pagou">Renata J. G. Tude</td></tr>
+        <tr><td class="sem-badge">Sem 3</td><td class="periodo">06/02 – 12/02</td><td><span class="status-badge pago"><span class="status-dot"></span>Pago</span></td><td class="data-pag">10/02/2026</td><td class="valor">R$ 250,00</td><td class="quem-pagou">Tullio D. Frescura</td></tr>
+        <tr><td class="sem-badge">Sem 4</td><td class="periodo">13/02 – 19/02</td><td><span class="status-badge pago"><span class="status-dot"></span>Pago</span></td><td class="data-pag">—</td><td class="valor">R$ 250,00</td><td class="quem-pagou">Renata J. G. Tude</td></tr>
+        <tr><td class="sem-badge">Sem 5</td><td class="periodo">20/02 – 26/02</td><td><span class="status-badge pago"><span class="status-dot"></span>Pago</span></td><td class="data-pag">—</td><td class="valor">R$ 250,00</td><td class="quem-pagou">Tullio D. Frescura</td></tr>
+        <tr><td class="sem-badge">Sem 6</td><td class="periodo">27/02 – 05/03</td><td><span class="status-badge pago"><span class="status-dot"></span>Pago</span></td><td class="data-pag">01/03/2026</td><td class="valor">R$ 250,00</td><td class="quem-pagou">Renata J. G. Tude</td></tr>
+        <tr><td class="sem-badge">Sem 7</td><td class="periodo">06/03 – 12/03</td><td><span class="status-badge pago"><span class="status-dot"></span>Pago</span></td><td class="data-pag">—</td><td class="valor">R$ 250,00</td><td class="quem-pagou">Tullio D. Frescura</td></tr>
+        <tr><td class="sem-badge">Sem 8</td><td class="periodo">13/03 – 19/03</td><td><span class="status-badge atraso"><span class="status-dot"></span>Em atraso</span></td><td class="data-pag">—</td><td class="valor">R$ 250,00</td><td class="quem-pagou">—</td></tr>
+        <tr><td class="sem-badge">Sem 9</td><td class="periodo">20/03 – 26/03</td><td><span class="status-badge pago"><span class="status-dot"></span>Pago</span></td><td class="data-pag">26/03/2026</td><td class="valor">R$ 250,00</td><td class="quem-pagou">Renata J. G. Tude</td></tr>
+        <tr><td class="sem-badge">Sem 10</td><td class="periodo">27/03 – 02/04</td><td><span class="status-badge atraso"><span class="status-dot"></span>Em atraso</span></td><td class="data-pag">—</td><td class="valor">R$ 250,00</td><td class="quem-pagou">—</td></tr>
+        <tr><td class="sem-badge">Sem 11</td><td class="periodo">03/04 – 09/04</td><td><span class="status-badge atraso"><span class="status-dot"></span>Em atraso</span></td><td class="data-pag">—</td><td class="valor">R$ 250,00</td><td class="quem-pagou">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="totals-section fade-in" style="animation-delay:.48s">
+    <div class="total-item">
+      <div class="total-item-label">Total Pago</div>
+      <div class="total-item-value green">R$ 2.000,00</div>
+    </div>
+    <div class="total-item">
+      <div class="total-item-label">Total em Aberto</div>
+      <div class="total-item-value red">R$ 750,00</div>
+    </div>
+  </div>
+
+  <footer class="fade-in" style="animation-delay:.52s">
+    <p>Produtora <strong>Iniciall</strong> · Controle interno de pagamentos</p>
+    <p>Última atualização: <strong>13/04/2026</strong></p>
+  </footer>
+
+</body>
+</html>
