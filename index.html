@@ -39,22 +39,9 @@
       gap: 2rem;
       flex-wrap: wrap;
     }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0;
-    }
-    .brand-logo {
-      height: 80px;
-      width: auto;
-      display: block;
-    }
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      margin-left: 0.25rem;
-    }
+    .brand { display: flex; align-items: center; gap: 0; }
+    .brand-logo { height: 80px; width: auto; display: block; }
+    .brand-text { display: flex; flex-direction: column; gap: 3px; margin-left: 0.25rem; }
     .brand-sup {
       font-family: 'Space Mono', monospace;
       font-size: 0.55rem;
@@ -72,18 +59,8 @@
     }
     .brand-name span { color: var(--amber); }
     .header-meta { text-align: right; }
-    .header-meta p {
-      font-size: 0.78rem;
-      color: #999;
-      font-family: 'Space Mono', monospace;
-    }
-    .header-meta strong {
-      display: block;
-      color: #111;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1rem;
-      margin: 2px 0;
-    }
+    .header-meta p { font-size: 0.78rem; color: #999; font-family: 'Space Mono', monospace; }
+    .header-meta strong { display: block; color: #111; font-family: 'DM Sans', sans-serif; font-size: 1rem; margin: 2px 0; }
 
     .amber-line {
       height: 2px;
@@ -115,27 +92,14 @@
       text-transform: uppercase;
       color: var(--text-muted);
     }
-    .summary-value {
-      font-family: 'Space Mono', monospace;
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
+    .summary-value { font-family: 'Space Mono', monospace; font-size: 1.5rem; font-weight: 700; }
     .summary-value.green { color: var(--green); }
-    .summary-value.red   { color: var(--red); }
     .summary-value.amber { color: var(--amber); }
-    .summary-value.white { color: var(--white); }
     .summary-sub { font-size: 0.72rem; color: #555; }
 
     /* ── PROGRESS ── */
-    .progress-section {
-      padding: 1.75rem 2.5rem;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    .progress-label {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.6rem;
-    }
+    .progress-section { padding: 1.75rem 2.5rem; border-bottom: 1px solid #1a1a1a; }
+    .progress-label { display: flex; justify-content: space-between; margin-bottom: 0.6rem; }
     .progress-label span {
       font-family: 'Space Mono', monospace;
       font-size: 0.6rem;
@@ -143,17 +107,8 @@
       text-transform: uppercase;
       color: var(--text-muted);
     }
-    .progress-label strong {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--amber);
-    }
-    .progress-track {
-      height: 5px;
-      background: #1e1e1e;
-      border-radius: 3px;
-      overflow: hidden;
-    }
+    .progress-label strong { font-family: 'Space Mono', monospace; font-size: 0.78rem; color: var(--amber); }
+    .progress-track { height: 5px; background: #1e1e1e; border-radius: 3px; overflow: hidden; }
     .progress-fill {
       height: 100%;
       width: 0;
@@ -161,7 +116,8 @@
       border-radius: 3px;
       animation: fillProgress 1.3s cubic-bezier(.4,0,.2,1) 0.3s forwards;
     }
-    @keyframes fillProgress { to { width: 90.4%; } }
+    /* Pago: 5.420,00 / Total: 5.420,00 + 208,74 = 5.628,74 → 96,3% */
+    @keyframes fillProgress { to { width: 96.3%; } }
 
     /* ── TABLE ── */
     .table-section { padding: 2rem 2.5rem; }
@@ -192,11 +148,11 @@
     }
     tbody tr:hover { background: #0f0f0f; }
     tbody td { padding: 0.9rem; font-size: 0.86rem; vertical-align: middle; }
-    tbody tr:nth-child(1){animation-delay:.04s} tbody tr:nth-child(2){animation-delay:.08s}
-    tbody tr:nth-child(3){animation-delay:.12s} tbody tr:nth-child(4){animation-delay:.16s}
-    tbody tr:nth-child(5){animation-delay:.2s}  tbody tr:nth-child(6){animation-delay:.24s}
-    tbody tr:nth-child(7){animation-delay:.28s} tbody tr:nth-child(8){animation-delay:.32s}
-    tbody tr:nth-child(9){animation-delay:.36s} tbody tr:nth-child(10){animation-delay:.4s}
+    tbody tr:nth-child(1){animation-delay:.04s}  tbody tr:nth-child(2){animation-delay:.08s}
+    tbody tr:nth-child(3){animation-delay:.12s}  tbody tr:nth-child(4){animation-delay:.16s}
+    tbody tr:nth-child(5){animation-delay:.20s}  tbody tr:nth-child(6){animation-delay:.24s}
+    tbody tr:nth-child(7){animation-delay:.28s}  tbody tr:nth-child(8){animation-delay:.32s}
+    tbody tr:nth-child(9){animation-delay:.36s}  tbody tr:nth-child(10){animation-delay:.40s}
     tbody tr:nth-child(11){animation-delay:.44s} tbody tr:nth-child(12){animation-delay:.48s}
     tbody tr:nth-child(13){animation-delay:.52s} tbody tr:nth-child(14){animation-delay:.56s}
     tbody tr:nth-child(15){animation-delay:.60s} tbody tr:nth-child(16){animation-delay:.64s}
@@ -206,8 +162,9 @@
     tbody tr:nth-child(23){animation-delay:.92s}
     @keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
 
-    .sem-badge { font-family:'Space Mono',monospace; font-size:0.68rem; color:#555; }
-    .periodo   { font-family:'Space Mono',monospace; font-size:0.72rem; color:#555; }
+    .sem-badge  { font-family:'Space Mono',monospace; font-size:0.68rem; color:#555; }
+    .debito-badge { font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--amber); }
+    .periodo    { font-family:'Space Mono',monospace; font-size:0.72rem; color:#555; }
     .status-badge {
       display:inline-flex; align-items:center; gap:5px;
       padding:3px 9px; border-radius:2px;
@@ -215,14 +172,14 @@
       letter-spacing:0.04em; font-weight:700; text-transform:uppercase;
     }
     .status-badge.pago     { background:var(--green-bg); color:var(--green); border:1px solid rgba(46,204,138,.18); }
-    .status-badge.atraso   { background:var(--red-bg);   color:var(--red);   border:1px solid rgba(224,61,61,.18); }
     .status-badge.pendente { background:rgba(245,168,0,.1); color:var(--amber); border:1px solid rgba(245,168,0,.25); }
     .status-dot { width:5px; height:5px; border-radius:50%; background:currentColor; }
-    .status-badge.atraso .status-dot, .status-badge.pendente .status-dot { animation:blink 1.5s ease infinite; }
+    .status-badge.pendente .status-dot { animation:blink 1.5s ease infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.15} }
     .valor      { font-family:'Space Mono',monospace; font-size:0.86rem; color:var(--white); }
     .data-pag   { font-family:'Space Mono',monospace; font-size:0.72rem; color:#555; }
     .quem-pagou { font-size:0.8rem; color:#777; }
+    .obs        { color:#555; font-size:0.7rem; margin-left:4px; }
 
     /* ── TOTALS ── */
     .totals-section {
@@ -252,6 +209,8 @@
     footer strong { color:var(--amber); }
 
     .fade-in { opacity:0; transform:translateY(10px); animation:fadeUp 0.5s ease forwards; }
+
+    .row-debito { border-top:1px solid #2a2a2a !important; }
 
     @media(max-width:700px){
       header { padding:1.5rem 1rem; }
@@ -286,17 +245,20 @@
   <div class="summary fade-in" style="animation-delay:.08s">
     <div class="summary-card">
       <span class="summary-label">Total Pago</span>
-      <span class="summary-value green">R$ 5.090,00</span>
-      <span class="summary-sub">19 semanas pagas + parcial + juros </span>
+      <!-- 21 sem × 250 + 128,74 juros = 5.250 + 128,74 = 5.378,74 -->
+      <!-- + 41,26 abatidos da sem 22 (parte do pagamento de R$330 em 10/07) = 5.420,00 -->
+      <span class="summary-value green">R$ 5.420,00</span>
+      <span class="summary-sub">21 semanas pagas + juros cartão + parcial sem 22</span>
     </div>
     <div class="summary-card">
       <span class="summary-label">Pendente</span>
-      <span class="summary-value amber">R$ 538,74</span>
-      <span class="summary-sub">2 semanas pendentes + restanta sem 20</span>
+      <!-- Sem 22: 250,00 - 41,26 abatidos = 208,74 -->
+      <span class="summary-value amber">R$ 208,74</span>
+      <span class="summary-sub">Restante da semana 22</span>
     </div>
     <div class="summary-card">
       <span class="summary-label">Previsão de Quitação</span>
-      <span class="summary-value amber">—</span>
+      <span class="summary-value amber">12/07/26</span>
       <span class="summary-sub">Data prevista</span>
     </div>
   </div>
@@ -304,7 +266,7 @@
   <div class="progress-section fade-in" style="animation-delay:.16s">
     <div class="progress-label">
       <span>Progresso do pagamento</span>
-      <strong>90,4% pago</strong>
+      <strong>96,3% pago</strong>
     </div>
     <div class="progress-track"><div class="progress-fill"></div></div>
   </div>
@@ -338,11 +300,10 @@
         <tr><td class="sem-badge">Sem 17</td><td class="periodo">15/05 – 21/05</td><td><span class="status-badge pago"><span class="status-dot"></span>Pago</span></td><td class="data-pag">09/06/2026</td><td class="valor">R$ 250,00</td><td class="quem-pagou">Renata J. G. Tude e Tullio D. Frescura</td></tr>
         <tr><td class="sem-badge">Sem 18</td><td class="periodo">22/05 – 28/05</td><td><span class="status-badge pago"><span class="status-dot"></span>Pago</span></td><td class="data-pag">25/06/2026</td><td class="valor">R$ 250,00</td><td class="quem-pagou">Tullio D. Frescura</td></tr>
         <tr><td class="sem-badge">Sem 19</td><td class="periodo">29/05 – 04/06</td><td><span class="status-badge pago"><span class="status-dot"></span>Pago</span></td><td class="data-pag">25/06/2026</td><td class="valor">R$ 250,00</td><td class="quem-pagou">Tullio D. Frescura</td></tr>
-        <tr style="border-top:1px solid #2a2a2a"><td class="sem-badge" style="color:var(--green)">Débito</td><td class="periodo" style="color:var(--white);font-size:0.82rem">Juros Cartão</td><td><span class="status-badge pago"><span class="status-dot"></span>Pago</span></td><td class="data-pag">25/06/2026</td><td class="valor">R$ 128,74</td><td class="quem-pagou">Tullio D. Frescura</td></tr>
-        <tr><td class="sem-badge">Sem 20</td><td class="periodo">05/06 – 11/06</td><td><span class="status-badge pendente"><span class="status-dot"></span>Pendente</span></td><td class="data-pag">—</td><td class="valor">R$ 38,74</td><td class="quem-pagou">Tullio D. Frescura <span style="color:#555;font-size:0.72rem">(R$ 211,26 pago - 25/06)</span></td></tr>
-        <tr><td class="sem-badge">Sem 21</td><td class="periodo">12/06 – 18/06</td><td><span class="status-badge pendente"><span class="status-dot"></span>Pendente</span></td><td class="data-pag">—</td><td class="valor">R$ 250,00</td><td class="quem-pagou">—<span style="color:#555;font-size:0.72rem"></span></td></tr>
-        <tr><td class="sem-badge">Sem 22</td><td class="periodo">19/06 – 25/06</td><td><span class="status-badge pendente"><span class="status-dot"></span>Pendente</span></td><td class="data-pag">—</td><td class="valor">R$ 250,00</td><td class="quem-pagou">—</td></tr>
-
+        <tr><td class="sem-badge">Sem 20</td><td class="periodo">05/06 – 11/06</td><td><span class="status-badge pago"><span class="status-dot"></span>Pago</span></td><td class="data-pag">10/07/2026</td><td class="valor">R$ 250,00</td><td class="quem-pagou">Tullio D. Frescura <span class="obs">(R$ 211,26 em 25/06 + R$ 38,74 em 10/07)</span></td></tr>
+        <tr class="row-debito"><td class="debito-badge">Débito</td><td class="periodo" style="color:var(--white);font-size:0.82rem">Juros Cartão</td><td><span class="status-badge pago"><span class="status-dot"></span>Pago</span></td><td class="data-pag">25/06/2026</td><td class="valor">R$ 128,74</td><td class="quem-pagou">Tullio D. Frescura</td></tr>
+        <tr><td class="sem-badge">Sem 21</td><td class="periodo">12/06 – 18/06</td><td><span class="status-badge pago"><span class="status-dot"></span>Pago</span></td><td class="data-pag">10/07/2026</td><td class="valor">R$ 250,00</td><td class="quem-pagou">Renata J. G. Tude<span class="obs">(pago com o pagamento de R$ 330,00 em 10/07)</span></td></tr>
+        <tr><td class="sem-badge">Sem 22</td><td class="periodo">19/06 – 25/06</td><td><span class="status-badge pendente"><span class="status-dot"></span>Pendente</span></td><td class="data-pag">—</td><td class="valor">R$ 208,74</td><td class="quem-pagou">— <span class="obs">R$ 41,26 abatido em 10/07/2026</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -350,17 +311,17 @@
   <div class="totals-section fade-in" style="animation-delay:.48s">
     <div class="total-item">
       <div class="total-item-label">Total Pago</div>
-      <div class="total-item-value green">R$ 5.090,00</div>
+      <div class="total-item-value green">R$ 5.420,00</div>
     </div>
     <div class="total-item">
       <div class="total-item-label">Total Pendente</div>
-      <div class="total-item-value amber">R$ 538,74</div>
+      <div class="total-item-value amber">R$ 208,74</div>
     </div>
   </div>
 
   <footer class="fade-in" style="animation-delay:.52s">
     <p>Produtora <strong>Iniciall</strong> · Controle interno de pagamentos</p>
-    <p>Última atualização: <strong>07/07/2026</strong></p>
+    <p>Última atualização: <strong>10/07/2026</strong></p>
   </footer>
 
 </body>
